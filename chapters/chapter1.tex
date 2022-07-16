@@ -1,0 +1,89 @@
+Fields, in a very basic sense, are entities which are described continuously on a manifold. Their values might be real or imaginary. At a single point on a manifold, they might be represented as a scalar, a vector or a tensor. The manifold itself can be of various forms, like Euclidean or Minkowski. \\
+
+\noindent Thus fields extend themselves naturally to QFT, as spacetime, according to our current understanding, is essentially continuous. The Langrangian formulation of mechanics is easily extrapolated to these continuous fields.
+
+\section{Principle of Least Action}
+In field theory, instead of working with the Lagrangian, we work with the Lagrangian density $\mathcal{L}$, defined as $L=\int\mathcal{L}\, dV$. This allows us to express action in the form of spacetime variables. The Lagrangian density is a function of a generalized field, $\eta$, its dreivative, $\partial_\nu\eta$ and the spacetime variables, $x^\nu$. The principle of least action extremizes the action.
+
+$$\delta S=\delta\int L\, dt=\delta\int\mathcal{L}\, dVdt=\delta\int\mathcal{L}\, dx^\nu$$
+
+\noindent For any path, extremum or not, the end points must be fixed, i.e. its variation is zero on the $(d-1)$ dimensional surface bounding the $d$ dimensional integration volume. Therefore, for a path with parameter $\alpha$, we have $\eta(x^\nu;\alpha)=\eta(x^\nu;0)+\alpha\xi(x^\nu)$. $\xi$ vanishes at end points. The action is an extremum for $\eta(x^\nu;0)$, therefore its derivative w.r.t. $\alpha$ also vanishes.
+
+$$\frac{dS}{d\alpha}=\int \left[\frac{\partial\mathcal{L}}{\partial\eta}\frac{\partial\eta}{\partial\alpha}+\frac{\partial\mathcal{L}}{\partial(\partial_\nu\eta)}\frac{\partial(\partial_\nu\eta)}{\partial\alpha}\right]\, d^dx$$
+
+\noindent Integrating by parts,
+$$\frac{dS}{d\alpha}=\int \left[\frac{\partial\mathcal{L}}{\partial\eta}-\frac{d}{dx^\nu}\left(\frac{\partial\mathcal{L}}{\partial(\partial_\nu \eta)}\right) \right]\, d^dx + \cancelto{0}{\int\frac{d}{dx^\nu}\left(\frac{\partial\mathcal{L}}{\partial(\partial_\nu \eta)}\frac{\partial\eta}{\partial\alpha}\right)\, d^dx}$$
+
+\noindent The second term vanishes because we transform the $d$ dimensional divergence theorem into an integral over the surface bounding the region of integration, which is zero because the variation of $\eta$ is zero on the surface.
+
+$$\frac{dS}{d\alpha}=0\implies \frac{\partial\mathcal{L}}{\partial\eta}=\frac{d}{dx^\nu}\left(\frac{\partial\mathcal{L}}{\partial(\partial_\nu \eta)}\right)$$
+
+\noindent This is the Euler-Lagrange equation for fields.
+
+\section{Noether's Theorem}
+Noether's theorem is quite possibly the single most important theory for fields. It states that for every continuous symmetry there exists a corresponding conservation law. This simple statement has profound implications, as we can derive the basic laws of mechanics simply by observing a symmetry in the system. I will first derive the result, and then see how a symmetry paves the way for conservation laws.\\
+
+\noindent An infinitesimal tranformation is given as $\eta(x^\mu)\rightarrow\eta'(x^{\mu'})=\eta(x^\mu)+\delta\eta(x^\mu)$. If there is no change in coordinates, but only in the functional form of the field variable, then we define $\eta'(x^{\mu})=\eta(x^\mu)+\bar\delta\eta(x^\mu)$. (Note: $\delta\eta(x^\mu) \neq \bar\delta\eta(x^\mu)$)\\
+
+\noindent Action must be invariant under transformation.
+
+$$\int_{\Omega'}d^dx\,\mathcal{L}(\eta',\partial_{\nu'}\eta',x^{\nu'})-\int_{\Omega}d^dx\,\mathcal{L}(\eta,\partial_\nu\eta,x^\nu)=0$$
+
+\noindent $x^{\nu'}$ is a dummy variable but therefore we can change it to $x^\nu$. But still, the domains of integration are different. $\Omega$ and $\Omega'$ differ infinitesimally.
+
+$$\implies\int_{\Omega}d^dx\,\left[(\mathcal{L}(\eta',\partial_\nu\eta',x^\nu)-\mathcal{L}(\eta,\partial_\nu\eta,x^\nu))+\frac{d}{dx^\mu}(\mathcal{L}(\eta,\partial_\nu\eta,x^\nu)\delta x^\mu)\right]=0$$
+
+\noindent Now, we can evaluate the first term as,
+
+\begin{align*}
+    \begin{split}
+        \mathcal{L}(\eta',\partial_\nu\eta',x^\nu)-\mathcal{L}(\eta,\partial_\nu\eta,x^\nu)&=\frac{\partial\mathcal{L}}{\partial\eta}\bar\delta\eta+\frac{\partial\mathcal{L}}{\partial(\partial_\nu\eta)} \bar\delta(\partial_\nu\eta)\\
+        &=\frac{d}{dx^\nu}\left(\frac{\partial\mathcal{L}}{\partial(\partial_\nu\eta)}\right)\bar\delta\eta+\frac{\partial\mathcal{L}}{\partial(\partial_\nu\eta)}\frac{d(\bar\delta\eta)}{dx^\nu}\\
+        &=\frac{d}{dx^\nu}\left(\frac{\partial\mathcal{L}}{\partial(\partial_\nu\eta)}\bar\delta\eta\right)
+    \end{split}
+\end{align*}
+
+\noindent Here, in the second line I have made use of the fact that $\bar\delta$ commutes with $\partial_\nu$ and their order can be interchanged, as it is a change at fixed $x^\nu$, unlike $\delta$. I have also used the Euler Lagrange equation for substituting the first term.\\
+
+\noindent If we write $\delta\eta=\bar\delta\eta+\frac{\partial\eta}{\partial x^\sigma}\delta x^\sigma$, we finally get $\partial_\nu j^\nu=0$, where $j^\nu$ is known as the Noether current and is given by
+
+$$j^\nu=\underbrace{\frac{\partial\mathcal{L}}{\partial(\partial_\nu\eta)}\delta\eta}_{\text{gauge transformations}}+\underbrace{\delta x^\sigma \left(\mathcal{L}\delta_\sigma^\nu-\frac{\partial\mathcal{L}}{\partial(\partial_\nu\eta)}\partial_\sigma\eta\right)}_{\text{spacetime transformations}}$$
+
+\noindent From here, we can derive various conservation laws. For example, if I set $\delta\eta=0$ and $\delta x^\sigma=\text{constant}$, we get the conservation of energy-momentum tensor, $\partial_\nu T^{\sigma\nu}=0$.
+
+\section{Local Gauge Invariance}
+For any Lagrangian density, we can get its field equation. For the free scalar theory, we have $\mathcal{L}=\partial^\mu\phi\partial_\mu\phi-m^2\phi^2$. Here, $\phi$ denotes the field and $m$ is the particle interpretation of mass.
+
+$$\frac{\partial\mathcal{L}}{\partial(\partial^\mu\phi)}=\partial_\mu\phi \hspace{1cm} \frac{\partial\mathcal{L}}{\partial\phi}=-m^2\phi$$
+
+$$\implies\partial_\mu\partial^\mu \phi+m^2\phi=0$$
+$$\implies(\partial^2+m^2)\phi=0$$
+
+\noindent In particle physics, this is the Klein Gordon equation for massive spin 0 particles.\\
+
+\noindent A gauge theory refers to a field theory in which the dynamics of the system does not change upon a particular symmetry transformation associated to a Lie group. Starting with the invariance of the Lagrangian density of $n$ real valued scalar fields,
+
+$$\mathcal{L}=\frac{1}{2}(\partial_\mu\boldsymbol\Phi)^T\partial_\mu\boldsymbol\Phi-\frac{1}{2}m^2\boldsymbol\Phi^T\boldsymbol\Phi$$
+
+\noindent Where $\boldsymbol\Phi^T=(\phi_1,\phi_2,\cdots,\phi_n)$. This is invariant under the global transformation $\boldsymbol\Phi\rightarrow\boldsymbol\Phi'= U\boldsymbol\Phi$, where $U$ is the transformation matrix of the $O(N)$ group. Since the transformation is global, i.e. $U$ is independent of spacetime coordinates, $\partial_\mu\boldsymbol\Phi\rightarrow\partial_\mu\boldsymbol\Phi'= U\partial_\mu\boldsymbol\Phi$.\\
+
+\noindent Noether's theorem implies the existence of conserved currents, $j_\mu^a=i\partial_\mu\boldsymbol\Phi^T T^a\boldsymbol\Phi, \,a=1,2,\cdots ,n^2-1$. Here, $T^a$'s are the generators of the group. There is one associated conserved current for each generator.\\
+
+\noindent However, we must impose a restriction that the transformation should be invariant under local transformations. The geometric interpretation is that the physical properties of the field must be independent of reference frame. It is an extension of special relativity to internal symmetries. If U is a function of spacetime coordinates, 
+
+\begin{align*}
+    \begin{split}
+        \partial_\mu(U\boldsymbol\Phi)&=(\partial_\mu U)\boldsymbol\Phi+U(\partial_\mu\boldsymbol\Phi)\\
+        &=U[\partial_\mu\boldsymbol\Phi+U^{-1}(\partial_\mu U)\boldsymbol\Phi]
+    \end{split}
+\end{align*}
+
+\noindent This failure of the derivative to commute with $U$ introduces an additional term, which spoils the invariance of the Lagrangian density. In order to rectify this problem, we need to define a new kind of derivative known as a gauge covariant derivative, which takes into account the `connection' that transports the field from $x^\mu$ to $y^\mu$.
+
+$$\boldsymbol\Phi(x^\mu+\delta x^\mu)-\boldsymbol\Phi(x^\mu)=\delta\boldsymbol\Phi(x^\mu)\propto\boldsymbol\Phi(x^\mu)$$
+$$\delta\boldsymbol\Phi(x^\mu)=iA_\nu(x^\mu)dx^\nu\boldsymbol\Phi(x^\mu)$$
+
+\noindent $A^\mu$'s are known as gauge fields, and it arises as a necessity for local gauge invariance. Now, $D_\mu\boldsymbol\Phi \rightarrow D_\mu'\boldsymbol\Phi'=U(D_\mu\boldsymbol\Phi)$. Here, the covariant derivative takes the form $D_\mu=\partial_\mu -i\lambda A_\mu$, where $\lambda$ is interpreted as a coupling constant, i.e. the strength of the interaction. For the covariant derivative definition to hold, the gauge fields must transform as follows,
+
+$$(\partial_\mu U)\boldsymbol\Phi+U\partial_\mu\boldsymbol\Phi -i\lambda A_\mu'U\boldsymbol\Phi=U(\partial_\mu\boldsymbol\Phi -i\lambda A_\mu\boldsymbol\Phi)$$
+$$\implies A_\mu'=UA_\mu U^{-1}-\frac{i}{\lambda}(\partial_\mu U)U^{-1}$$

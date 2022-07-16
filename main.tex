@@ -1,0 +1,139 @@
+\documentclass[12pt]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{cancel}
+\usepackage[titletoc]{appendix}
+\graphicspath{ {images/} }
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000
+
+\begin{document}
+
+\thispagestyle{empty}
+\begin{center}
+    \Huge
+    \textbf{Field Theoretical Effects of Condensed Matter Systems}\\
+    \vspace{1.5cm}
+    \textbf{by}\\
+    \vspace{0.5cm}
+    \textbf{Sombit Roy}
+    \vfill
+    A thesis presented for the degree of\\
+    M.Sc.\\
+    \vspace{0.5cm}
+    \Large Department of Physics\\
+    Birla Institute of Technology and Science, Pilani
+    
+\end{center}
+
+\chapter*{Acknowledgements}
+\addcontentsline{toc}{chapter}{\numberline{}Acknowledgements}
+I would like to thank all the faculty in the Physics Department of BITS Pilani. This thesis would not have been possible without the invaluable knowledge they imparted to me. In particular, I am immensely grateful to my supervisor, Prof. Jayendra Nath Bandyopadhyay for his help and advice related to my work. 
+
+\chapter*{Abstract}
+\addcontentsline{toc}{chapter}{\numberline{}Abstract}
+Historically, field theory has most successfully been applied to the physics of subatomic particles. This branch, Quantum Field Theory, has combined special relativity with quantum mechanics to give extraordinarily accurate results, explaining a vast range of phenomena from the existence of antimatter to the Higgs field. \\ 
+
+\noindent Statistical mechanics and condensed matter physics, on the other hand, have totally different origins. They are related to thermodynamics, the theory of gases, phase transitions, etc. At first glance, it would seem that the two have nothing in common. \\ 
+
+\noindent Things become much more interesting if we see two equations that often arise while studying these `unrelated' subjects. The computation of path integral averages in QFT is done as,
+
+$$\langle A\rangle= \frac{\int \mathcal{D}\phi \,A \,e^{\frac{-S[\phi]}{\hbar}}}{\int \mathcal{D}\phi \,e^{\frac{-S[\phi]}{\hbar}}}$$ 
+
+\noindent while in SM, thermal expection values are of the form,
+
+$$\langle A\rangle= \frac{\sum A \,e^{\frac{-E[\phi]}{k_BT}}}{\sum \,e^{\frac{-E[\phi]}{k_BT}}}$$ \\
+
+\noindent It immediately becomes clear that there is a relation between the two. This is just the tip of the iceberg, there are a multitude of ways in which these two theories are initimately intertwined. In this thesis, I will study the field theoretical effects of condensed matter systems. \\
+
+\noindent The thesis is broadly divided into three parts. The first one covers the fundamentals of QFT. The focus will remain on the $\phi^4$ theory, its manifestation as a field theory using Lagrangian mechanics, its path integral formulation and its perturbative interactions expressed as Feynman diagrams. \\
+
+\noindent The second part covers condensed matter physics, especially the Ising model of a ferromagnet. The above field theory is very similar to the Hamiltonian of the Ising model, and thus analogies can be drawn between QFT and SM. This part also dives into phase transitions and the critical exponents of this model and their derivation using field theory. The concept of scaling is also explored via renormalization group.\\
+
+\noindent Finally, in the third part, I will shift my focus away from the Ising model to study other statistical systems using fields. A vast array of phenomena come under condensed matter physics, but I will keep it limited to the study of Fermi gases and Goldstone bosons.\\
+
+\noindent Note: From here on, throughout the text I have used $\hbar=c=k_B=1$.
+
+\tableofcontents
+
+\part{Methodologies in Field Theory : $\phi^4$ theory}
+
+\chapter{Classical Field Theory}
+\input{chapters/chapter1}
+
+\chapter{Perturbative Expansion}
+\input{chapters/chapter2}
+
+\part{Application in Condensed Matter : Ising model}
+
+\chapter{Phase Transitions}
+\input{chapters/chapter3}
+
+\chapter{Renormalization Group}
+\input{chapters/chapter4}
+
+\part{A Few Other Statistical Field Theories}
+
+\chapter{Fermi Gas}
+\input{chapters/chapter5}
+
+\chapter{Goldstone Bosons}
+\input{chapters/chapter6}
+
+\begin{appendices}
+
+\chapter{Lie Groups and Algebras}
+Many field theories have equations that have symmetries mimicking the symmetries of Lie groups. Elements of a Lie group are continuous in nature having an associated Lie algebra on a vector space with basis $u_i$. The Lie algebra satisfies the following properties -
+
+$$[u_i,u_i]=0$$
+$$[u_i,u_j]=-[u_j,u_i]$$
+$$[u_i,[u_j,u_k]]+[u_j,[u_k,u_i]]+[u_k,[u_j,u_i]]=0 \text{ (Jacobi's identity)}$$
+$$[u_i,u_j]=\sum_k c^k_{ij}u_k$$
+
+\noindent where $c^k_{ij}$'s are the structure constants for a particular algebra. And the elements of the group are given as $Q(\theta_i)=e^{\frac{i}{2}\sum_i \theta_i u_i}$\\
+
+\noindent For example, the group $SU(2)$ has its generators given by the Pauli matrices. $[\sigma_1,\sigma_2]=2i\sigma_3\implies c^k_{ij}=\epsilon_{ijk}$. For getting a particular representation, we can choose $\theta_i=(\theta,0,0)$.
+
+$$e^{\frac{i}{2} \theta\sigma_1}=\begin{bmatrix} \cos\left(\frac{\theta}{2}\right) && i\sin\left(\frac{\theta}{2}\right) \\ i\sin\left(\frac{\theta}{2}\right) && \cos\left(\frac{\theta}{2}\right)\end{bmatrix}$$
+
+\noindent We can see that this matrix satifies the requirements for a being an $SU(2)$ representation as its determinant is 1 and it is unitary.
+
+\chapter{Ladder Operators}
+Any quantized field must obey Heisenberg's uncertainty principle $[\Pi_r(\boldsymbol{x},t),\eta_s(\boldsymbol{x'},t)]=-i\delta_{rs}\delta^3(\boldsymbol{x}-\boldsymbol{x'})$, where $\eta$'s are fields and $\Pi$'s are conjugate momenta.\\
+
+\noindent The creation and annihilation operators, collectively known as ladder operators, are respectively defined as follows.
+
+$$\hat{a}(\boldsymbol{k})=\omega(\boldsymbol{k})\eta(\boldsymbol{k})+i\Pi(\boldsymbol{k})$$
+$$\hat{a}^\dagger(\boldsymbol{k})=\omega(\boldsymbol{k})\eta(\boldsymbol{k})-i\Pi(\boldsymbol{k})$$
+
+\noindent Where, $\omega=\sqrt{k^2+m^2}$\\
+
+\noindent The creation operator creates a quanta of the field with momentum $\boldsymbol{k}$, while the annihilation operator destroys a quanta of the field with momentum $\boldsymbol{k}$.\\
+
+\noindent We can define the field and conjugate momenta in terms of $\hat{a}$ and $\hat{a}^\dagger$.
+
+$$\eta(\boldsymbol{x})=\int\frac{d^3k}{2(2\pi)^3\omega}(\hat{a}e^{-i\boldsymbol{k}\cdot\boldsymbol{x}}+\hat{a}^\dagger e^{i\boldsymbol{k}\cdot\boldsymbol{x}})$$
+
+$$\Pi(\boldsymbol{x})=\int\frac{d^3k}{2(2\pi)^3}(\hat{a}e^{-i\boldsymbol{k}\cdot\boldsymbol{x}}-\hat{a}^\dagger e^{i\boldsymbol{k}\cdot\boldsymbol{x}})$$
+
+\end{appendices}
+
+\addcontentsline{toc}{chapter}{\numberline{}Bibliography}
+\begin{thebibliography}{10}
+    \bibitem{} Angheluta-Bauer, Luiza, \emph{Ferromagnetic Phase Transition}, Universitetet i Oslo (2018)
+    \bibitem{} Belyaev, Alexander, \emph{Path Integrals in QFT}, University of Southampton (2012)
+    \bibitem{} Fradkin, Eduardo, \emph{Quantum Field Theory: An Integrated Approach}, Princeton University Press (2020)
+    \bibitem{} Goldstein, Herbert, et al., \emph{Classical Mechanics}, Addison-Wesley (2000)
+    \bibitem{} Joshi, A.W., \emph{Elements of Group Theory for Physicists}, John Wiley and Sons (1988)
+    \bibitem{} Kleinert, Hagen and Schulte-Fr\o hlinde, Verena, \emph{Critical Properties of $\phi^4$ Theories}, Freie Universit\"at Berlin (2001)
+    \bibitem{} Rom$\tilde{\text{a}}$o, Jorge C., \emph{Canonical Quantization of Free Fields}, T\'ecnico Lisboa (2013)
+    \bibitem{} Scherer, Michael M., \emph{Introduction to Renormalization}, University of Cologne (2018)
+    \bibitem{} Tong, David, \emph{Statistical Field Theory}, University of Cambridge (2017)
+    \bibitem{} Xin, Xianhao, \emph{Glashow-Weinberg-Salam Model: Electroweak Symmetry Breaking}, University of Illinois (2007)
+\end{thebibliography}
+
+\end{document}
